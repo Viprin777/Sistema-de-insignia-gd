@@ -1,0 +1,35 @@
+{
+	"geode": "5.8.0",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "theviprin777-de-insignias",
+	"name": "Badge System",
+	"version": "v1.0.0",
+	"developer": "TheViprin777",
+	"description": "Earn collectible badges for your Geometry Dash milestones.",
+	"tags": ["gameplay", "interface"],
+	"settings": {
+		"show-toast": {
+			"type": "bool",
+			"name": "Show Unlock Popups",
+			"description": "Slide a popup in from the top of the screen whenever you unlock a badge.",
+			"default": true
+		},
+		"play-sound": {
+			"type": "bool",
+			"name": "Play Unlock Sound",
+			"description": "Play the achievement sound when a badge is unlocked.",
+			"default": true
+		},
+		"menu-button": {
+			"type": "bool",
+			"name": "Show Menu Button",
+			"description": "Add a Badges button to the main menu. Takes effect the next time the main menu loads.",
+			"default": true
+		}
+	}
+}

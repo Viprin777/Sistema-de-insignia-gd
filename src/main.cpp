@@ -8,18 +8,7 @@
 
 using namespace geode::prelude;
 
-namespace {
-    // Level IDs are a plain int in some versions and a wrapper with .value() in others.
-    template <class T>
-int readInt(T const& v) {
-    if constexpr (requires { { v.value() } -> std::convertible_to<int>; }) {
-        return static_cast<int>(v.value());
-    } else if constexpr (requires { { v.v } -> std::convertible_to<int>; }) {
-        return static_cast<int>(v.v);
-    } else {
-        return static_cast<int>(v);
-    }
-}
+
 
 
 // ---------------------------------------------------------------------------
@@ -113,6 +102,6 @@ class $modify(BadgePlayLayer, PlayLayer) {
         bool practice = m_isPracticeMode;
         bool flawless = !practice && m_fields->deathsThisSession == 0;
 
-        badges::BadgeManager::get().levelCompleted(readInt(m_level->m_levelID), practice, flawless);
+        badges::BadgeManager::get().levelCompleted(m_level->m_levelID.value(), practice, flawless);
     }
 };

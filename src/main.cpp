@@ -11,14 +11,16 @@ using namespace geode::prelude;
 namespace {
     // Level IDs are a plain int in some versions and a wrapper with .value() in others.
     template <class T>
-    int readInt(T const& v) {
-        if constexpr (requires { v.value(); }) {
-            return static_cast<int>(v.value());
-        } else {
-            return static_cast<int>(v);
-        }
+int readInt(T const& v) {
+    if constexpr (requires { { v.value() } -> std::convertible_to<int>; }) {
+        return static_cast<int>(v.value());
+    } else if constexpr (requires { { v.v } -> std::convertible_to<int>; }) {
+        return static_cast<int>(v.v);
+    } else {
+        return static_cast<int>(v);
     }
 }
+
 
 // ---------------------------------------------------------------------------
 // Main menu: adds the Badges button and runs the daily-streak check.
